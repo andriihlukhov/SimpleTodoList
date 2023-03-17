@@ -1,0 +1,56 @@
+.todoList {
+	margin-top: 70px;
+	font-size: 24px;
+	font-weight: 600;
+	color: #0F0F10;
+}
+
+.todoItem {
+	margin-bottom: 18px;
+}
+
+.todoItemNoEdit {
+	display: flex;
+	align-items: center;
+}
+
+.lockButton {
+	width: 26px;
+	height: 26px;
+	border: 2px solid white;
+	border-radius: 42px;
+	margin-right: 16px;
+}
+
+.lockButtonLocked {
+	background-color: #8BEA78;
+	width: 26px;
+	height: 26px;
+	border: 2px solid white;
+	border-radius: 42px;
+	margin-right: 16px;
+}
+
+.mainTitle {
+	background-color: #EEEEEE;
+	width: 534px;
+	border-radius: 14px;
+	padding: 10px 20px;
+	margin-right: 10px;
+}
+.mainTitleLocked {
+	text-decoration: line-through;
+}
+
+.iconDelete {
+	margin-left: 10px;
+}
+
+.editInput {
+	background-color: #ead8c1;
+	border-radius: 14px;
+	padding: 10px 20px;
+	width: 534px;
+	margin-right: 10px;
+}
+
