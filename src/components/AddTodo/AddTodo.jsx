@@ -1,33 +1,15 @@
 import React, { useState } from 'react'
 import s from './AddTodo.module.css'
-import uuid from 'react-uuid';
+import MyButton from '../BasicItems/Button/MyButton';
+import MyInput from '../BasicItems/Input/MyInput';
+import { SiAddthis } from 'react-icons/si'
 
-const AddTodo = ({todo, setTodo}) => {
-
-	const [value, setValue] = useState('')
-
-	const addTodo = (id) => {
-		if (value == '') {
-			return
-		}
-		const newTodo = [...todo, {
-			title: value,
-			id: uuid(),
-			isCompleted: false
-		}]
-		setValue('')
-		setTodo(newTodo)
-	}
+const AddTodo = (props) => {
 
 	return (
 		<div className={s.addTodo}>
-			<input
-			onKeyPress={(e) => e.key == 'Enter' ? addTodo(todo.id) : ''}
-			onChange={(e) => setValue(e.target.value)}
-			value={value} 
-			className={s.addTodoInput}
-			placeholder='Add a new task'/>
-			<button onClick={() => addTodo(todo.id)} className={s.addTodoButton}>Add</button>
+			<MyInput children={'Write task title'} onChange={(e) => props.setValue(e.target.value)} onKeyPress={(e) => e.key == 'Enter' ? props.onAdd(props.todos.id) : ''} value={props.value}/>
+			<MyButton children={<SiAddthis size={30}/>} onClick={props.onAdd}/>
 		</div>
 	)
 }

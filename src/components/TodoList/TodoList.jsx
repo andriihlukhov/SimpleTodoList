@@ -1,20 +1,32 @@
 import React, { useState } from 'react'
-import s from './TodoList.module.css'
-import iconEdit from '../../edit.svg'
-import iconDelete from '../../delete.svg'
-import iconArrow from '../../arrow.svg'
 
-const TodoList = ({ todo, setTodo }) => {
-	const [edit, setEdit] = useState(null)
+// CSS file
+import s from './TodoList.module.css'
+
+// Basic Components
+import MyInput from '../BasicItems/Input/MyInput'
+import MyButton from '../BasicItems/Button/MyButton'
+
+// Icons
+import iconEdit from '/public/edit.svg'
+import iconDelete from '/public/delete.svg'
+import iconArrow from '/public/arrow.svg'
+
+// React Icons
+import { AiFillLock } from 'react-icons/ai'
+import { AiFillUnlock } from 'react-icons/ai'
+
+const TodoList = ({ todos, setTodo }) => {
+	const [inEditMode, setEdit] = useState(null)
 	const [value, setValue] = useState('')
 
 	const deleteTodo = (id) => {
-		const newTodo = [...todo].filter((item) => item.id != id)
+		const newTodo = [...todos].filter((item) => item.id != id)
 		setTodo(newTodo)
 	}
 
 	const lockTodo = (id) => {
-		const newTodo = [...todo].filter((item) => {
+		const newTodo = [...todos].filter((item) => {
 			if (item.id == id) {
 				item.isCompleted = !item.isCompleted
 			}
@@ -29,7 +41,7 @@ const TodoList = ({ todo, setTodo }) => {
 	}
 
 	const saveTodo = (id, title) => {
-		const newTodo = [...todo].map((item) => {
+		const newTodo = [...todos].map((item) => {
 			if (item.id == id && value != '') {
 				item.title = value
 			}
@@ -41,43 +53,50 @@ const TodoList = ({ todo, setTodo }) => {
 
 	return (
 		<div className={s.todoList}>
-			{todo.map((item) => (
+			{todos.map((item) => (
 				<div className={s.todoItem} key={item.id}>
-					{edit == item.id ? (
-						<div className={s.todoItemEditDiv}>
-							<button className={s.lockButton}></button>
-							<input
-								onKeyPress={(e) => (e.key == 'Enter' ? saveTodo(item.id) : '')}
-								className={s.editInput}
-								placeholder={item.title}
-								value={value}
-								onChange={(e) => setValue(e.target.value)}
-							/>
-							<button onClick={() => saveTodo(item.id, item.title)}>
-								<img src={iconArrow} />
-							</button>
-							<button
-								onClick={() => deleteTodo(item.id)}
-								className={s.iconDelete}
-							>
-								<img src={iconDelete} />
-							</button>
+					{inEditMode == item.id ? (
+						<div className='flex justify-center items-center'>
+							<div className='ml-11'>
+								<MyInput
+									onChange={(e) => setValue(e.target.value)}
+									value={value}
+									onKeyPress={(e) =>
+										e.key == 'Enter' ? saveTodo(item.id) : ''
+									}
+								/>
+							</div>
+							<div className='flex'>
+								<MyButton
+									onClick={() => saveTodo(item.id, item.title)}
+									children={<img src={iconArrow} />}
+								/>
+								<MyButton
+									className={s.iconButton}
+									onClick={() => deleteTodo(item.id)}
+									children={<img src={iconDelete} />}
+								/>
+							</div>
 						</div>
 					) : (
-						<div className={s.todoItemNoEdit}>
+						<div className={s.defaultTodo}>
 							{item.isCompleted ? (
 								<div>
-									<button
+									<MyButton
 										onClick={() => lockTodo(item.id)}
-										className={s.lockButtonLocked}
-									></button>
+										children={
+											<AiFillUnlock className='text-red-500 mr-2' size={30} />
+										}
+									/>
 								</div>
 							) : (
 								<div>
-									<button
+									<MyButton
 										onClick={() => lockTodo(item.id)}
-										className={s.lockButton}
-									></button>
+										children={
+											<AiFillLock className='text-green-500 mr-2' size={30} />
+										}
+									/>
 								</div>
 							)}
 							<div className={s.mainTitle}>
@@ -87,16 +106,15 @@ const TodoList = ({ todo, setTodo }) => {
 									<div>{item.title}</div>
 								)}
 							</div>
-							<div>
-								<button onClick={() => editTodo(item.id, item.title)}>
-									<img src={iconEdit} />
-								</button>
-								<button
+							<div className='flex'>
+								<MyButton
+									onClick={() => editTodo(item.id, item.title)}
+									children={<img src={iconEdit} />}
+								/>
+								<MyButton
 									onClick={() => deleteTodo(item.id)}
-									className={s.iconDelete}
-								>
-									<img src={iconDelete} />
-								</button>
+									children={<img src={iconDelete} />}
+								/>
 							</div>
 						</div>
 					)}

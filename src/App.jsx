@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React, {useState} from 'react'
 import Header from './components/Header/Header'
 import AddTodo from './components/AddTodo/AddTodo'
 import TodoList from './components/TodoList/TodoList'
+import uuid from 'react-uuid';
 
 const App = () => {
 
-	const [todo, setTodo] = useState([
+	const [todos, setTodo] = useState([
 		{
 			title: 'Task 1',
 			id: 1,
@@ -23,12 +24,25 @@ const App = () => {
 		},
 	])
 
+	const [value, setValue] = useState('')
+
+	const addTodo = (id) => {
+		if (value == '') {
+			return
+		}
+			todos.push({
+			title: value,
+			id: uuid(),
+			isCompleted: false
+		})
+		setValue('')
+	}
 
 	return (
-		<div className='min-w-max'>
+		<div className='w-1/2'>
 			<Header/>
-			<AddTodo todo={todo} setTodo={setTodo}/>
-			<TodoList todo={todo} setTodo={setTodo}/>
+			<AddTodo todos={todos} onAdd={addTodo} value={value} setValue={setValue}/>
+			<TodoList todos={todos} setTodo={setTodo}/>
 		</div>
 	)
 }

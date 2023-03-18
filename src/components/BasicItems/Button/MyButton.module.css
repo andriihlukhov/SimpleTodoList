@@ -1,0 +1,13 @@
+.mainButtonStyle {
+	padding: 10px 42px;
+	margin-left: 15px;
+	background-color: #8BEA78;
+	border-radius: 14px;
+	color: black;
+	font-size: 18px;
+	font-weight: 600;
+}
+
+.iconButton {
+	margin-left: 20px;
+}
