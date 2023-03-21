@@ -1,10 +1,10 @@
 import React, { Children } from 'react'
 import s from './MyButton.module.css'
 
-const Button = ({children, onClick, className}) => {
+const Button = ({children, onClick}) => {
 	return (
 		<div>
-			<button className={s.iconButton}
+			<button className={s.myButton}
 			onClick={onClick}
 			>
 				{children}

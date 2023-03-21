@@ -24,24 +24,21 @@ const App = () => {
 		},
 	])
 
-	const [value, setValue] = useState('')
-
-	const addTodo = (id) => {
-		if (value == '') {
-			return
+	const addTodo = (value) => {
+		if (value != '') {
+			const newTodo = [{
+				title: value,
+				id: uuid(),
+				isCompleted: false
+			}, ...todos]
+			setTodo(newTodo)
 		}
-			todos.push({
-			title: value,
-			id: uuid(),
-			isCompleted: false
-		})
-		setValue('')
 	}
 
 	return (
 		<div className='w-1/2'>
 			<Header/>
-			<AddTodo todos={todos} onAdd={addTodo} value={value} setValue={setValue}/>
+			<AddTodo onAdd={addTodo}/>
 			<TodoList todos={todos} setTodo={setTodo}/>
 		</div>
 	)
