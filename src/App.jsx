@@ -33,7 +33,6 @@ const App = () => {
 			}, ...todos]
 			setTodo(newTodo)
 		}
-		return
 	}
 
 	return (
