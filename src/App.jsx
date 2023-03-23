@@ -36,7 +36,7 @@ const App = () => {
 	}
 
 	return (
-		<div className='w-1/2'>
+		<div>
 			<Header/>
 			<AddTodo onAdd={addTodo}/>
 			<TodoList todos={todos} setTodo={setTodo}/>

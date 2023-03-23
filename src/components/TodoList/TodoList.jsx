@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 // CSS file
-import s from './TodoList.module.css'
+import './TodoList.css'
 
 // Basic Components
 import MyInput from '../BasicItems/Input/MyInput'
@@ -53,13 +53,14 @@ const TodoList = ({ todos, setTodo }) => {
 	}
 
 	return (
-		<div className={s.todoList}>
+		<div className='todoList'>
 			{todos.map((item) => (
-				<div className={s.todoItem} key={item.id}>
+				<div className='todoItem' key={item.id}>
 					{inEditMode == item.id ? (
-						<div className='flex justify-center items-center'>
-							<div className='ml-[61px]'>
+						<div className='todoItem-editMode'>
+							<div>
 								<MyInput
+								className='myInput'
 									onChange={(e) => setValue(e.target.value)}
 									value={value}
 									onKeyPress={(e) =>
@@ -67,7 +68,7 @@ const TodoList = ({ todos, setTodo }) => {
 									}
 								/>
 							</div>
-							<div className='flex'>
+							<div className='blockWithButtons'>
 								<MyButton
 									onClick={() => saveTodo(item.id, item.title)}
 									children={<img src={iconArrow} />}
@@ -79,9 +80,9 @@ const TodoList = ({ todos, setTodo }) => {
 							</div>
 						</div>
 					) : (
-						<div className={s.defaultTodo}>
+						<div className='defaultTodo'>
 							{item.isCompleted ? (
-								<div className='mr-4'>
+								<div className='lockButton'>
 									<MyButton
 										onClick={() => lockTodo(item.id)}
 										children={
@@ -90,7 +91,7 @@ const TodoList = ({ todos, setTodo }) => {
 									/>
 								</div>
 							) : (
-								<div className='mr-4'>
+								<div className='lockButton'>
 									<MyButton
 										onClick={() => lockTodo(item.id)}
 										children={
@@ -99,14 +100,14 @@ const TodoList = ({ todos, setTodo }) => {
 									/>
 								</div>
 							)}
-							<div className={s.mainTitle}>
+							<div className='todoTitle'>
 								{item.isCompleted ? (
-									<div className={s.mainTitleLocked}>{item.title}</div>
+									<div className='titleLocked defaultTitle'>{item.title}</div>
 								) : (
-									<div>{item.title}</div>
+									<div className='defaultTitle'>{item.title}</div>
 								)}
 							</div>
-							<div className='flex'>
+							<div className='blockWithButtons'>
 								<MyButton
 									onClick={() => editTodo(item.id, item.title)}
 									children={<img src={iconEdit} />}

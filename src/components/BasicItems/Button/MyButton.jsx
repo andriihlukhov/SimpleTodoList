@@ -1,10 +1,10 @@
 import React, { Children } from 'react'
-import s from './MyButton.module.css'
+import './MyButton.css'
 
 const Button = ({children, onClick}) => {
 	return (
 		<div>
-			<button className={s.myButton}
+			<button className='myButton'
 			onClick={onClick}
 			>
 				{children}

@@ -1,6 +1,10 @@
-.addTodo {
+.blockAddTodo {
 	margin-top: 30px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.blockAddTodo .myButton {
+	margin-left: 15px;
 }
