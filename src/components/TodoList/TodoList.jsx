@@ -17,6 +17,7 @@ import { AiFillLock } from 'react-icons/ai'
 import { AiFillUnlock } from 'react-icons/ai'
 
 const TodoList = ({ todos, setTodo }) => {
+	
 	const [inEditMode, setEdit] = useState(null)
 	const [value, setValue] = useState('')
 
@@ -57,7 +58,7 @@ const TodoList = ({ todos, setTodo }) => {
 				<div className={s.todoItem} key={item.id}>
 					{inEditMode == item.id ? (
 						<div className='flex justify-center items-center'>
-							<div className='ml-11'>
+							<div className='ml-[61px]'>
 								<MyInput
 									onChange={(e) => setValue(e.target.value)}
 									value={value}
@@ -72,7 +73,6 @@ const TodoList = ({ todos, setTodo }) => {
 									children={<img src={iconArrow} />}
 								/>
 								<MyButton
-									className={s.iconButton}
 									onClick={() => deleteTodo(item.id)}
 									children={<img src={iconDelete} />}
 								/>
@@ -81,20 +81,20 @@ const TodoList = ({ todos, setTodo }) => {
 					) : (
 						<div className={s.defaultTodo}>
 							{item.isCompleted ? (
-								<div>
+								<div className='mr-4'>
 									<MyButton
 										onClick={() => lockTodo(item.id)}
 										children={
-											<AiFillUnlock className='text-red-500 mr-2' size={30} />
+											<AiFillUnlock color={'red'} size={30} />
 										}
 									/>
 								</div>
 							) : (
-								<div>
+								<div className='mr-4'>
 									<MyButton
 										onClick={() => lockTodo(item.id)}
 										children={
-											<AiFillLock className='text-green-500 mr-2' size={30} />
+											<AiFillLock color={'green'} size={30} />
 										}
 									/>
 								</div>
