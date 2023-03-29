@@ -25,14 +25,15 @@ const App = () => {
 	])
 
 	const addTodo = (value) => {
-		if (value != '') {
-			const newTodo = [{
-				title: value,
-				id: uuid(),
-				isCompleted: false
-			}, ...todos]
-			setTodo(newTodo)
+		if (value == '') {
+			return
 		}
+		const newTodo = [{
+			title: value,
+			id: uuid(),
+			isCompleted: false
+		}, ...todos]
+		setTodo(newTodo)
 	}
 
 	return (

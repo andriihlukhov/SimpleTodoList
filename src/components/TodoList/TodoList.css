@@ -5,65 +5,6 @@
 	color: #0F0F10;
 }
 
-.todoList .todoItem {
-	margin-bottom: 18px;
+.todoList .todoItem + .todoItem {
+	margin-top: 18px;
 }
-
-/*-------------- Edit Mode ----------------*/
-
-.todoItem-editMode {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	margin-left: 40px;
-}
-
-.todoItem-editMode .myInput {
-	outline: none;
-	border: none;
-	background-color: rgb(238, 214, 197);
-}
-
-/*-------------- todoItem Buttons Style ----------------*/
-
-.blockWithButtons {
-	display: flex;
-	align-items: center;
-	margin-left: 5px;
-}
-
-.blockWithButtons button {
-	margin-left: 5px;
-}
-
-/*-------------- Initial Style ----------------*/
-
-.defaultTodo {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.defaultTodo .lockButton {
-	margin-right: 10px;
-}
-
-.defaultTodo .todoTitle {
-	background-color: #EEEEEE;
-	width: 534px;
-	border-radius: 14px;
-	padding: 10px 25px;
-	overflow: hidden;
-}
-
-.defaultTodo .titleLocked {
-	text-decoration: line-through;
-}
-
-.defaultTodo .todoTitle .defaultTitle {
-	overflow: hidden;
-	word-break: break-all;
-}
-
-
-

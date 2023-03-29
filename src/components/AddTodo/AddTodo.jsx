@@ -14,7 +14,7 @@ const AddTodo = (props) => {
 	}
 
 	return (
-		<div className='blockAddTodo'>
+		<div className='addTodo'>
 			<MyInput children={'Write task title'} onChange={(e) => setValue(e.target.value)} value={value} onKeyPress={(e) => {if (e.key ==='Enter') {submitValue()}}}/>
 			<MyButton className='myButton' children={<SiAddthis color='white' size={30}/>} onClick={() => submitValue()}/>
 		</div>
