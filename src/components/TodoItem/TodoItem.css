@@ -1,55 +1,44 @@
-/*-------------- Edit Mode ----------------*/
+.todoItem {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.todoItem .lockButton {
+	margin-right: 10px;
+}
+
+/* -------------------- Edit Mode -------------------------- */
 
 .todoItem-editMode {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	margin-left: 40px;
 }
 
 .todoItem-editMode .myInput {
 	outline: none;
 	border: none;
 	background-color: rgb(238, 214, 197);
-}
-
-/*-------------- todoItem Buttons Style ----------------*/
-
-.blockWithButtons {
-	display: flex;
-	align-items: center;
-	margin-left: 5px;
-}
-
-.blockWithButtons button {
-	margin-left: 5px;
-}
-
-/*-------------- Initial Style ----------------*/
-
-.mainTodo {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.mainTodo .lockButton {
 	margin-right: 10px;
 }
 
-.mainTodo .todoTitle {
+/* -------------------- Initial Mode -------------------------- */
+
+.todoItem-initialMode .todoTitle {
 	background-color: #EEEEEE;
 	width: 534px;
 	border-radius: 14px;
 	padding: 10px 25px;
 	overflow: hidden;
+	margin-right: 10px;
 }
 
-.mainTodo .titleLocked {
+.todoItem .titleLocked {
 	text-decoration: line-through;
 }
 
-.mainTodo .todoTitle .mainTitle {
+.todoItem .todoTitle .title {
 	overflow: hidden;
 	word-break: break-all;
 }

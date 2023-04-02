@@ -6,7 +6,7 @@ import uuid from 'react-uuid';
 
 const App = () => {
 
-	const [todos, setTodo] = useState([
+	const [todos, setTodos] = useState([
 		{
 			title: 'Task 1',
 			id: 1,
@@ -33,14 +33,14 @@ const App = () => {
 			id: uuid(),
 			isCompleted: false
 		}, ...todos]
-		setTodo(newTodo)
+		setTodos(newTodo)
 	}
 
 	return (
 		<div>
 			<Header/>
 			<AddTodo onAdd={addTodo}/>
-			<TodoList todos={todos} setTodo={setTodo}/>
+			<TodoList todos={todos} setTodos={setTodos}/>
 		</div>
 	)
 }

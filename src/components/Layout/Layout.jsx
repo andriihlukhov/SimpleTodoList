@@ -3,7 +3,7 @@ import './Layout.css'
 
 const Layout = ({children}) => {
 	return (
-		<div className='myLayout'>
+		<div className='layout'>
 			{children}
 		</div>
 	)

@@ -4,46 +4,44 @@ import TodoItem from '../TodoItem/TodoItem'
 // CSS file
 import './TodoList.css'
 
-const TodoList = ({ todos, setTodo }) => {
+const TodoList = ({ todos, setTodos }) => {
 
-	const [editableTodo, setEditableTodo] = useState(null)
-	const [value, setValue] = useState('')
+	const [editableTodoId, setEditableTodoId] = useState(null)
 
 	const deleteTodo = (id) => {
-		const newTodo = [...todos].filter((item) => item.id != id)
-		setTodo(newTodo)
+		const newTodos = [...todos].filter((item) => item.id != id)
+		setTodos(newTodos)
 	}
 
 	const lockTodo = (id) => {
-		const newTodo = [...todos].filter((item) => {
+		const newTodos = [...todos].filter((item) => {
 			if (item.id == id) {
 				item.isCompleted = !item.isCompleted
 			}
 			return item
 		})
-		setTodo(newTodo)
+		setTodos(newTodos)
 	}
 
-	const editTodo = (id, title) => {
-		setEditableTodo(id)
-		setValue(title)
+	const editTodo = (id) => {
+		setEditableTodoId(id)
 	}
 
-	const saveTodo = (id, title) => {
-		const newTodo = [...todos].map((item) => {
+	const saveTodo = (id, value) => {
+		const newTodos = [...todos].map((item) => {
 			if (item.id == id && value != '') {
 				item.title = value
 			}
 			return item
 		})
-		setEditableTodo(null)
-		setTodo(newTodo)
+		setEditableTodoId(null)
+		setTodos(newTodos)
 	}
 
 	return (
 		<div className='todoList'>
 			{todos.map((item) => (
-				<TodoItem key={item.id} value={value} item={item} inEditMode={editableTodo} setValue={setValue} onDelete={deleteTodo} onLock={lockTodo} onEdit={editTodo} onSave={saveTodo}/>
+				<TodoItem key={item.id} item={item} inEditMode={editableTodoId && editableTodoId == item.id} onDelete={deleteTodo} onLock={lockTodo} onEdit={editTodo} onSave={saveTodo}/>
 			))}
 		</div>
 	)

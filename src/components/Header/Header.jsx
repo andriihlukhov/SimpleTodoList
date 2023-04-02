@@ -3,7 +3,7 @@ import './Header.css'
 
 const Header = () => {
 	return (
-		<div className='myHeader'>
+		<div className='header'>
 			Todo List for Junior
 		</div>
 	)
