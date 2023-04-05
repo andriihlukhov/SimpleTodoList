@@ -1,7 +1,11 @@
 import React, {useState} from 'react'
+
+// Components 
 import Header from './components/Header/Header'
 import AddTodo from './components/AddTodo/AddTodo'
 import TodoList from './components/TodoList/TodoList'
+
+// React Uuid
 import uuid from 'react-uuid';
 
 const App = () => {
@@ -26,14 +30,15 @@ const App = () => {
 
 	const addTodo = (value) => {
 		if (value == '') {
+			alert('Field is empty, please write something')
 			return
 		}
-		const newTodo = [{
+		const newTodos = [{
 			title: value,
 			id: uuid(),
 			isCompleted: false
 		}, ...todos]
-		setTodos(newTodo)
+		setTodos(newTodos)
 	}
 
 	return (

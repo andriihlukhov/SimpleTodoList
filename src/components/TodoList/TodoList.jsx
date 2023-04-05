@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+
+// Components
 import TodoItem from '../TodoItem/TodoItem'
 
 // CSS file
@@ -8,14 +10,12 @@ const TodoList = ({ todos, setTodos }) => {
 
 	const [editableTodoId, setEditableTodoId] = useState(null)
 
-	const deleteTodo = (id) => {
-		const newTodos = [...todos].filter((item) => item.id != id)
-		setTodos(newTodos)
-	}
-
 	const lockTodo = (id) => {
-		const newTodos = [...todos].filter((item) => {
-			if (item.id == id) {
+		if (!id) {
+			return
+		}
+		const newTodos = [...todos].map((item) => {
+			if (item.id === id) {
 				item.isCompleted = !item.isCompleted
 			}
 			return item
@@ -28,13 +28,22 @@ const TodoList = ({ todos, setTodos }) => {
 	}
 
 	const saveTodo = (id, value) => {
+		if (value === '') {
+			alert('Field is empty, please write something')
+			return
+		}
 		const newTodos = [...todos].map((item) => {
-			if (item.id == id && value != '') {
+			if (item.id === id) {
 				item.title = value
 			}
 			return item
 		})
 		setEditableTodoId(null)
+		setTodos(newTodos)
+	}
+	
+	const deleteTodo = (id) => {
+		const newTodos = [...todos].filter((item) => item.id != id)
 		setTodos(newTodos)
 	}
 

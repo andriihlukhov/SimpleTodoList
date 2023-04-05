@@ -1,23 +1,24 @@
 import React, { useState } from 'react'
 
-// CSS File
-import './TodoItem.css'
-
-// Basic Components
+// Basic Items
 import MyInput from '../BasicItems/Input/MyInput'
 import MyButton from '../BasicItems/Button/MyButton'
 
 // Icons
 import iconEdit from '/public/edit.svg'
 import iconDelete from '/public/delete.svg'
-import iconArrow from '/public/arrow.svg'
+import iconSaveEdited from '/public/saveEdited.svg'
 
 // React Icons
 import { AiFillLock } from 'react-icons/ai'
 import { AiFillUnlock } from 'react-icons/ai'
 
+// CSS File
+import './TodoItem.css'
+
 const TodoItem = ({ onDelete, onLock, onEdit, onSave, item, inEditMode }) => {
-	const [value, setValue] = useState('')
+	
+	const [newValue, setNewValue] = useState('')
 
 	return (
 		<div className='todoItem' key={item.id}>
@@ -32,34 +33,26 @@ const TodoItem = ({ onDelete, onLock, onEdit, onSave, item, inEditMode }) => {
 					}
 				/>
 			</div>
-			{inEditMode ? (
-				<div className='todoItem-editMode'>
+			<div className='todoItem'>
+				{
+					inEditMode ? 
 					<MyInput
-						className='myInput'
-						onChange={(e) => setValue(e.target.value)}
-						value={value}
-						onKeyPress={(e) => (e.key == 'Enter' ? onSave(item.id, value) : '')}
+						onChange={(e) => setNewValue(e.target.value)}
+						value={newValue}
+						onKeyPress={(e) => {if (e.key ==='Enter') {onSave(item.id, newValue)}}}
 					/>
-					<MyButton
-						onClick={() => onSave(item.id, value)}
-						children={<img src={iconArrow} />}
-					/>
-				</div>
-			) : (
-				<div className='todoItem todoItem-initialMode'>
+				:
 					<div className='todoTitle'>
-						<div className={item.isCompleted ? 'titleLocked title' : 'title'}>
+						<div className={item.isCompleted ? 'titleLocked' : null}>
 							{item.title}
 						</div>
 					</div>
-					<div>
-						<MyButton
-							onClick={() => onEdit(item.id, setValue(item.title))}
-							children={<img src={iconEdit} />}
-						/>
-					</div>
-				</div>
-			)}
+				}
+			</div>
+			<MyButton
+				onClick={() => inEditMode ? onSave(item.id, newValue) : onEdit(item.id, setNewValue(item.title))}
+				children={<img src={inEditMode ? iconSaveEdited : iconEdit} />}
+			/>
 			<MyButton
 				onClick={() => onDelete(item.id)}
 				children={<img src={iconDelete} />}

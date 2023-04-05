@@ -8,37 +8,24 @@
 	margin-right: 10px;
 }
 
-/* -------------------- Edit Mode -------------------------- */
-
-.todoItem-editMode {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.todoItem-editMode .myInput {
+.todoItem .myInput {
 	outline: none;
 	border: none;
 	background-color: rgb(238, 214, 197);
 	margin-right: 10px;
 }
 
-/* -------------------- Initial Mode -------------------------- */
-
-.todoItem-initialMode .todoTitle {
+.todoItem .todoTitle {
 	background-color: #EEEEEE;
 	width: 534px;
 	border-radius: 14px;
 	padding: 10px 25px;
 	overflow: hidden;
 	margin-right: 10px;
-}
-
-.todoItem .titleLocked {
-	text-decoration: line-through;
-}
-
-.todoItem .todoTitle .title {
 	overflow: hidden;
 	word-break: break-all;
+}
+
+.todoItem .todoTitle .titleLocked {
+	text-decoration: line-through;
 }
