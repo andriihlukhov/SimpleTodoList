@@ -1,9 +1,11 @@
 import React from 'react'
-import s from './Header.module.css'
+
+// CSS File
+import './Header.css'
 
 const Header = () => {
 	return (
-		<div className={s.header}>
+		<div className='header'>
 			Todo List for Junior
 		</div>
 	)

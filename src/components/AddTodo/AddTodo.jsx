@@ -1,22 +1,28 @@
 import React, { useState } from 'react'
-import s from './AddTodo.module.css'
+
+// Basic Items
 import MyButton from '../BasicItems/Button/MyButton';
 import MyInput from '../BasicItems/Input/MyInput';
+
+// React Icons
 import { SiAddthis } from 'react-icons/si'
 
-const AddTodo = (props) => {
+// CSS File
+import './AddTodo.css'
 
-	const [value, setValue] = useState('')
+const AddTodo = ({ onAdd }) => {
+
+	const [inputValue, setInputValue] = useState('')
 
 	const submitValue = () => {
-		props.onAdd(value)
-		setValue('')
+		onAdd(inputValue)
+		setInputValue('')
 	}
 
 	return (
-		<div className={s.addTodo}>
-			<MyInput children={'Write task title'} onChange={(e) => setValue(e.target.value)} value={value} onKeyPress={(e) => {if (e.key ==='Enter') {submitValue()}}}/>
-			<MyButton className='ml-4' children={<SiAddthis size={30}/>} onClick={() => submitValue()}/>
+		<div className='addTodo'>
+			<MyInput children={'Write task title'} onChange={(e) => setInputValue(e.target.value)} value={inputValue} onKeyPress={(e) => {if (e.key ==='Enter') {submitValue()}}}/>
+			<MyButton children={<SiAddthis color='white' size={30}/>} onClick={() => submitValue()}/>
 		</div>
 	)
 }

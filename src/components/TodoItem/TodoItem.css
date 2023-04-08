@@ -1,0 +1,31 @@
+.todoItem {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.todoItem .lockButton {
+	margin-right: 10px;
+}
+
+.todoItem .myInput {
+	outline: none;
+	border: none;
+	background-color: rgb(238, 214, 197);
+	margin-right: 10px;
+}
+
+.todoItem .todoTitle {
+	background-color: #EEEEEE;
+	width: 534px;
+	border-radius: 14px;
+	padding: 10px 25px;
+	overflow: hidden;
+	margin-right: 10px;
+	overflow: hidden;
+	word-break: break-all;
+}
+
+.todoItem .todoTitle .titleLocked {
+	text-decoration: line-through;
+}

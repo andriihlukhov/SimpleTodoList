@@ -1,12 +1,16 @@
 import React, {useState} from 'react'
+
+// Components 
 import Header from './components/Header/Header'
 import AddTodo from './components/AddTodo/AddTodo'
 import TodoList from './components/TodoList/TodoList'
+
+// React Uuid
 import uuid from 'react-uuid';
 
 const App = () => {
 
-	const [todos, setTodo] = useState([
+	const [todos, setTodos] = useState([
 		{
 			title: 'Task 1',
 			id: 1,
@@ -25,21 +29,23 @@ const App = () => {
 	])
 
 	const addTodo = (value) => {
-		if (value != '') {
-			const newTodo = [{
-				title: value,
-				id: uuid(),
-				isCompleted: false
-			}, ...todos]
-			setTodo(newTodo)
+		if (value == '') {
+			alert('Field is empty, please write something')
+			return
 		}
+		const newTodos = [{
+			title: value,
+			id: uuid(),
+			isCompleted: false
+		}, ...todos]
+		setTodos(newTodos)
 	}
 
 	return (
-		<div className='w-1/2'>
+		<div>
 			<Header/>
 			<AddTodo onAdd={addTodo}/>
-			<TodoList todos={todos} setTodo={setTodo}/>
+			<TodoList todos={todos} setTodos={setTodos}/>
 		</div>
 	)
 }

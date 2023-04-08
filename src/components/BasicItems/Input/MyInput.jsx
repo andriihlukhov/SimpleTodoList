@@ -1,5 +1,7 @@
 import React, { Children } from 'react'
-import s from './MyInput.module.css'
+
+// CSS File
+import './MyInput.css'
 
 const MyInput = ({value, children, onChange, onKeyPress}) => {
 	return (
@@ -8,7 +10,7 @@ const MyInput = ({value, children, onChange, onKeyPress}) => {
 			onKeyPress={onKeyPress}
 			onChange={onChange}
 			value={value}
-			className={s.mainInputStyle}
+			className='myInput'
 			placeholder={children}/>
 		</div>
 	)
