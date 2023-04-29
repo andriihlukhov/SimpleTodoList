@@ -10,7 +10,11 @@ import { SiAddthis } from 'react-icons/si'
 // CSS File
 import './AddTodo.css'
 
-const AddTodo = ({ onAdd }) => {
+type Props = {
+	onAdd: Function
+}
+
+const AddTodo = ({ onAdd }: Props) => {
 
 	const [inputValue, setInputValue] = useState('')
 
@@ -21,7 +25,7 @@ const AddTodo = ({ onAdd }) => {
 
 	return (
 		<div className='addTodo'>
-			<MyInput children={'Write task title'} onChange={(e) => setInputValue(e.target.value)} value={inputValue} onKeyPress={(e) => {if (e.key ==='Enter') {submitValue()}}}/>
+			<MyInput children={'Write task title'} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInputValue(e.target.value)} value={inputValue} onKeyPress={(e: React.KeyboardEvent<HTMLInputElement>) => {if (e.key ==='Enter') {submitValue()}}}/>
 			<MyButton children={<SiAddthis color='white' size={30}/>} onClick={() => submitValue()}/>
 		</div>
 	)

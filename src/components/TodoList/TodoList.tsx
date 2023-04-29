@@ -6,11 +6,22 @@ import TodoItem from '../TodoItem/TodoItem'
 // CSS file
 import './TodoList.css'
 
-const TodoList = ({ todos, setTodos }) => {
+interface Todos {
+	title: string
+	id: string
+	isCompleted: boolean
+}
 
-	const [editableTodoId, setEditableTodoId] = useState(null)
+type Props = {
+	todos: Todos[]
+	setTodos: Function
+}
 
-	const lockTodo = (id) => {
+const TodoList = ({ todos, setTodos }: Props) => {
+
+	const [editableTodoId, setEditableTodoId] = useState('')
+
+	const lockTodo = (id: string) => {
 		if (!id) {
 			return
 		}
@@ -23,11 +34,11 @@ const TodoList = ({ todos, setTodos }) => {
 		setTodos(newTodos)
 	}
 
-	const editTodo = (id) => {
+	const editTodo = (id: string) => {
 		setEditableTodoId(id)
 	}
 
-	const saveTodo = (id, value) => {
+	const saveTodo = (id: string, value: string) => {
 		if (value === '') {
 			alert('Field is empty, please write something')
 			return
@@ -38,11 +49,11 @@ const TodoList = ({ todos, setTodos }) => {
 			}
 			return item
 		})
-		setEditableTodoId(null)
+		setEditableTodoId('')
 		setTodos(newTodos)
 	}
 	
-	const deleteTodo = (id) => {
+	const deleteTodo = (id: string) => {
 		const newTodos = [...todos].filter((item) => item.id != id)
 		setTodos(newTodos)
 	}
