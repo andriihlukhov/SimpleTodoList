@@ -1,4 +1,4 @@
-Hello everyone!,
+Hello everyone!
 
 A simple to-do list for daily tasks.
 
